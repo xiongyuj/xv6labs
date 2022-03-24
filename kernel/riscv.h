@@ -286,6 +286,13 @@ r_sp()
   asm volatile("mv %0, sp" : "=r" (x) );
   return x;
 }
+//读取s0(frame pointer)的值
+static inline uint64
+r_fp(){
+  uint64 x;
+  asm volatile("mv %0, s0" : "=r" (x));
+  return x;
+}
 
 // read and write tp, the thread pointer, which holds
 // this core's hartid (core number), the index into cpus[].
